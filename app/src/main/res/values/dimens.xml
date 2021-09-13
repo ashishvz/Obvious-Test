@@ -2,4 +2,17 @@
 <resources>
     <dimen name="cornerRadius35dp">35dp</dimen>
     <dimen name="marginTop100dp">100dp</dimen>
+    <dimen name="height500">500dp</dimen>
+    <dimen name="margin5dp">5dp</dimen>
+    <dimen name="width50dp">50dp</dimen>
+    <dimen name="margin10dp">10dp</dimen>
+    <dimen name="radius25dp">25dp</dimen>
+    <dimen name="height410dp">410dp</dimen>
+    <dimen name="textSize22sp">22sp</dimen>
+    <dimen name="minusMargin10">-10dp</dimen>
+    <dimen name="textSize16sp">16sp</dimen>
+    <dimen name="textSize15sp">15sp</dimen>
+    <dimen name="textSize35sp">35sp</dimen>
+    <dimen name="margin15dp">15dp</dimen>
+    <dimen name="width80dp">80dp</dimen>
 </resources>

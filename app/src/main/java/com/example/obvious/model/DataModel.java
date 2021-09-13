@@ -1,4 +1,4 @@
-package com.example.obvious;
+package com.example.obvious.model;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -11,7 +11,7 @@ public class DataModel implements Serializable {
     public String copyright;
 
     @SerializedName("date")
-    public Date date;
+    public String date;
 
     @SerializedName("explanation")
     public String explanation;
@@ -27,7 +27,7 @@ public class DataModel implements Serializable {
 
     public int imageColor;
 
-    public DataModel(String copyright, Date date, String explanation, String hdUrl, String title, String url) {
+    public DataModel(String copyright, String date, String explanation, String hdUrl, String title, String url) {
         this.copyright = copyright;
         this.date = date;
         this.explanation = explanation;
@@ -44,11 +44,11 @@ public class DataModel implements Serializable {
         this.copyright = copyright;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

@@ -1,4 +1,4 @@
-package com.example.obvious;
+package com.example.obvious.adapter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -16,6 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
+import com.example.obvious.model.DataModel;
+import com.example.obvious.R;
 
 import java.util.List;
 
@@ -84,7 +86,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
     }
 
     public interface onClickListener {
-        public void onClick(int position);
+        void onClick(int position);
     }
 
 }

@@ -1,4 +1,4 @@
-package com.example.obvious;
+package com.example.obvious.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.widget.ContentLoadingProgressBar;
@@ -9,18 +9,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.obvious.R;
+import com.example.obvious.adapter.Adapter;
+import com.example.obvious.model.DataModel;
+import com.example.obvious.utils.ToolKit;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements Adapter.onClickListener {
 
@@ -56,8 +59,7 @@ public class MainActivity extends AppCompatActivity implements Adapter.onClickLi
         }
         recyclerView.setVisibility(View.VISIBLE);
         contentLoadingProgressBar.hide();
-
-        return modelData;
+        return ToolKit.sortArray(modelData);
     }
 
     private String getJSONFromAssets() {
