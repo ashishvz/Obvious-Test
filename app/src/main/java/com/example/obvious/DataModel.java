@@ -2,9 +2,10 @@ package com.example.obvious;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class DataModel {
+public class DataModel implements Serializable {
 
     @SerializedName("copyright")
     public String copyright;
@@ -23,6 +24,8 @@ public class DataModel {
 
     @SerializedName("url")
     public String url;
+
+    public int imageColor;
 
     public DataModel(String copyright, Date date, String explanation, String hdUrl, String title, String url) {
         this.copyright = copyright;
@@ -79,5 +82,13 @@ public class DataModel {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public int getImageColor() {
+        return imageColor;
+    }
+
+    public void setImageColor(int imageColor) {
+        this.imageColor = imageColor;
     }
 }
