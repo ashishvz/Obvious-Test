@@ -1,15 +1,22 @@
 package com.example.obvious.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.palette.graphics.Palette;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.target.CustomTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.example.obvious.model.DataModel;
 import com.example.obvious.R;
 import com.google.android.material.card.MaterialCardView;
@@ -42,13 +49,26 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.MyViewHold
         holder.title.setText(model.getTitle());
         holder.description.setText(model.getExplanation());
         holder.date.setText(model.getDate());
-        holder.imageBackgroundCard.setCardBackgroundColor(model.getImageColor());
-        Glide.with(context).load(model.hdUrl).into(holder.imageView);
+        Glide.with(context).load(model.hdUrl).diskCacheStrategy(DiskCacheStrategy.DATA).into(holder.imageView);
         holder.backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (onBackClick != null)
                     onBackClick.onClicked();
+            }
+        });
+        Glide.with(context).asBitmap().load(model.url).into(new CustomTarget<Bitmap>() {
+            @Override
+            public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
+                Palette.from(resource).generate(palette -> {
+                    assert palette != null;
+                    holder.imageBackgroundCard.setCardBackgroundColor(palette.getDominantColor(context.getResources().getColor(R.color.purple_200)));
+                });
+            }
+
+            @Override
+            public void onLoadCleared(@Nullable Drawable placeholder) {
+
             }
         });
     }
@@ -65,7 +85,7 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.MyViewHold
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageView = itemView.findViewById(R.id.detailImageView);
+            imageView = itemView.findViewById(R.id.imageView);
             title = itemView.findViewById(R.id.titleText);
             description = itemView.findViewById(R.id.descText);
             date = itemView.findViewById(R.id.dateText);

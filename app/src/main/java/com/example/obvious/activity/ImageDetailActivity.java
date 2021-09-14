@@ -10,6 +10,7 @@ import android.os.Bundle;
 
 import com.example.obvious.R;
 import com.example.obvious.adapter.DetailAdapter;
+import com.example.obvious.constants.AppConstants;
 import com.example.obvious.model.DataModel;
 
 import java.util.List;
@@ -31,8 +32,8 @@ public class ImageDetailActivity extends AppCompatActivity implements DetailAdap
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_detail);
-        Bundle bundle = getIntent().getBundleExtra("Bundle");
-        dataModels = (List<DataModel>) bundle.getSerializable("dataList");
+        Bundle bundle = getIntent().getBundleExtra(AppConstants.BUNDLE);
+        dataModels = (List<DataModel>) bundle.getSerializable(AppConstants.DATA_LIST);
         onBackClick = this;
         snapHelper = new LinearSnapHelper();
         recyclerView = findViewById(R.id.imageDetailRecycler);
@@ -40,7 +41,7 @@ public class ImageDetailActivity extends AppCompatActivity implements DetailAdap
         adapter = new DetailAdapter(ImageDetailActivity.this, dataModels, onBackClick);
         snapHelper.attachToRecyclerView(recyclerView);
         recyclerView.setAdapter(adapter);
-        recyclerView.scrollToPosition(getIntent().getIntExtra("position", 0));
+        recyclerView.scrollToPosition(getIntent().getIntExtra(AppConstants.POSITION, 0));
     }
 
     @Override

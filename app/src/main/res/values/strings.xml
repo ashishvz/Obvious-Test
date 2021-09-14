@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Obvious</string>
-    <string name="imageApp">ImageApp</string>
+    <string name="imageApp">SpaceApp</string>
+    <string name="let_s_have_a_space_walk">Let\'s have a space walk..</string>
+    <string name="start_here">Start here</string>
+    <string name="obvious_space_app">Obvious Space App</string>
 </resources>

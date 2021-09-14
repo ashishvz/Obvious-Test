@@ -14,6 +14,7 @@ import androidx.palette.graphics.Palette;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.example.obvious.model.DataModel;
@@ -43,29 +44,13 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         DataModel model = dataModels.get(holder.getAdapterPosition());
-        Glide.with(context).load(model.url).into(holder.imageView);
-        Glide.with(context).asBitmap().load(model.hdUrl).into(new CustomTarget<Bitmap>() {
-            @Override
-            public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
-                Palette.from(resource).generate(new Palette.PaletteAsyncListener() {
-                    @Override
-                    public void onGenerated(@Nullable Palette palette) {
-                        assert palette != null;
-                        model.setImageColor(palette.getVibrantColor(context.getResources().getColor(R.color.purple_200)));
-                    }
-                });
-            }
+        Glide.with(context).load(model.url).diskCacheStrategy(DiskCacheStrategy.DATA).into(holder.imageView);
 
-            @Override
-            public void onLoadCleared(@Nullable Drawable placeholder) {
-
-            }
-        });
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (onClickListener != null) {
-                    onClickListener.onClick(holder.getAdapterPosition());
+                    onClickListener.onClick(holder.getAdapterPosition(), holder.imageView);
                 }
             }
         });
@@ -86,7 +71,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
     }
 
     public interface onClickListener {
-        void onClick(int position);
+        void onClick(int position, ImageView imageView);
     }
 
 }

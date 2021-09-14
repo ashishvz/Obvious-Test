@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black">
@@ -40,7 +41,7 @@
                     app:cardElevation="@dimen/margin10dp">
 
                     <ImageView
-                        android:id="@+id/detailImageView"
+                        android:id="@+id/imageView"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"
@@ -62,27 +63,29 @@
             android:textSize="@dimen/textSize22sp" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/descText"
+            android:id="@+id/dateText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin10dp"
             android:layout_marginTop="@dimen/minusMargin10"
             android:layout_marginEnd="@dimen/margin10dp"
             android:fontFamily="sans-serif-medium"
+            android:gravity="end"
             android:textColor="@color/grey"
-            android:textSize="@dimen/textSize16sp" />
+            android:textSize="@dimen/textSize15sp"
+            android:visibility="visible" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/dateText"
+            android:id="@+id/descText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin10dp"
             android:layout_marginEnd="@dimen/margin10dp"
             android:fontFamily="sans-serif-medium"
-            android:gravity="end"
+            android:justificationMode="inter_word"
             android:textColor="@color/grey"
-            android:textSize="@dimen/textSize15sp"
-            android:visibility="visible"/>
+            android:textSize="@dimen/textSize16sp"
+            tools:targetApi="o" />
 
     </LinearLayout>
 </ScrollView>

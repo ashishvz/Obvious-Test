@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:orientation="vertical"
+    tools:context=".SplasScreen">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/headerText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/margin15dp"
+        android:fontFamily="sans-serif-black"
+        android:gravity="center"
+        android:padding="@dimen/margin10dp"
+        android:text="@string/obvious_space_app"
+        android:textColor="@color/white"
+        android:textSize="@dimen/textSize35sp" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="@dimen/size80dp"
+        android:layout_height="@dimen/size80dp"
+        android:layout_below="@id/headerText"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/astronaut_helmet_128px" />
+
+    <ImageView
+        android:id="@+id/splashImageView"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height410dp"
+        android:layout_centerInParent="true" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/button"
+        android:layout_marginTop="@dimen/margin15dp"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center"
+        android:padding="@dimen/margin10dp"
+        android:text="@string/let_s_have_a_space_walk"
+        android:textColor="@color/white"
+        android:textSize="@dimen/textSize30sp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="@dimen/margin10dp"
+        android:layout_marginBottom="@dimen/margin10dp"
+        android:backgroundTint="@color/grey"
+        android:padding="@dimen/margin10dp"
+        android:text="@string/start_here"
+        android:textColor="@color/white"
+        app:cornerRadius="@dimen/radius10dp"
+        app:icon="@drawable/rocket"
+        app:iconGravity="end"
+        app:iconPadding="@dimen/margin10dp"
+        app:iconSize="@dimen/size40dp" />
+
+</RelativeLayout>
