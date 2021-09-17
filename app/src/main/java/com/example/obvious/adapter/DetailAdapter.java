@@ -17,6 +17,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
+import com.example.obvious.interfaces.onBackClick;
 import com.example.obvious.model.DataModel;
 import com.example.obvious.R;
 import com.google.android.material.card.MaterialCardView;
@@ -26,9 +27,9 @@ import java.util.List;
 
 public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.MyViewHolder> {
 
-    private Context context;
-    private List<DataModel> dataModels;
-    private onBackClick onBackClick;
+    private final Context context;
+    private final List<DataModel> dataModels;
+    private final onBackClick onBackClick;
 
     public DetailAdapter(Context context, List<DataModel> dataModels, onBackClick onBackClick) {
         this.context = context;
@@ -78,10 +79,13 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.MyViewHold
         return dataModels.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
-        private ImageView imageView, backBtn;
-        private MaterialTextView title, description, date;
-        private MaterialCardView imageBackgroundCard;
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
+        private final ImageView imageView;
+        private final ImageView backBtn;
+        private final MaterialTextView title;
+        private final MaterialTextView description;
+        private final MaterialTextView date;
+        private final MaterialCardView imageBackgroundCard;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -92,9 +96,5 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.MyViewHold
             imageBackgroundCard = itemView.findViewById(R.id.imageBackgroundCard);
             backBtn = itemView.findViewById(R.id.backBtn);
         }
-    }
-
-    public interface onBackClick {
-        void onClicked();
     }
 }

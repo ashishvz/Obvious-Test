@@ -11,17 +11,18 @@ import android.os.Bundle;
 import com.example.obvious.R;
 import com.example.obvious.adapter.DetailAdapter;
 import com.example.obvious.constants.AppConstants;
+import com.example.obvious.interfaces.onBackClick;
 import com.example.obvious.model.DataModel;
 
 import java.util.List;
 
-public class ImageDetailActivity extends AppCompatActivity implements DetailAdapter.onBackClick {
+public class ImageDetailActivity extends AppCompatActivity implements onBackClick {
 
     private RecyclerView recyclerView;
     private DetailAdapter adapter;
     private List<DataModel> dataModels;
     private SnapHelper snapHelper;
-    private DetailAdapter.onBackClick onBackClick;
+    private onBackClick onBackClick;
 
     @Override
     public void onBackPressed() {

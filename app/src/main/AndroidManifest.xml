@@ -12,9 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Obvious">
         <activity
-            android:name=".SplasScreen"
+            android:name=".activity.SplasScreen"
             android:exported="true"
-            android:theme="@style/statusBarStyleForLightBackground">
+            android:theme="@style/statusBarStyleForSplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

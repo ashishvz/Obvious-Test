@@ -15,6 +15,8 @@ import android.widget.ImageView;
 import com.example.obvious.R;
 import com.example.obvious.adapter.Adapter;
 import com.example.obvious.constants.AppConstants;
+import com.example.obvious.dataProvider.DataProvider;
+import com.example.obvious.interfaces.onClickListener;
 import com.example.obvious.model.DataModel;
 import com.example.obvious.utils.ToolKit;
 import com.google.gson.Gson;
@@ -30,54 +32,23 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements Adapter.onClickListener {
+public class MainActivity extends AppCompatActivity implements onClickListener {
 
-    private ContentLoadingProgressBar contentLoadingProgressBar;
     private RecyclerView recyclerView;
     private List<DataModel> modelData;
-
+    private DataProvider dataProvider;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Adapter.onClickListener onClickListener = this;
+        onClickListener onClickListener = this;
         setContentView(R.layout.activity_main);
-        contentLoadingProgressBar = findViewById(R.id.contentLoadingBar);
         recyclerView = findViewById(R.id.imageRecycler);
         modelData = new ArrayList<>();
-        recyclerView.setVisibility(View.GONE);
-        contentLoadingProgressBar.show();
-        Adapter adapter = new Adapter(MainActivity.this, parseDataFromJSON(), onClickListener);
+        dataProvider = new DataProvider(getApplicationContext(), modelData);
+        Adapter adapter = new Adapter(MainActivity.this, dataProvider.parseDataFromJSON(), onClickListener);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(MainActivity.this, 2);
         recyclerView.setLayoutManager(gridLayoutManager);
         recyclerView.setAdapter(adapter);
-    }
-
-    private List<DataModel> parseDataFromJSON() {
-        try {
-            JSONArray dataArray = new JSONArray(getJSONFromAssets());
-            for (int i = 0; i < dataArray.length(); i++)
-                modelData.add(new Gson().fromJson(dataArray.get(i).toString(), DataModel.class));
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        recyclerView.setVisibility(View.VISIBLE);
-        contentLoadingProgressBar.hide();
-        return ToolKit.sortArray(modelData);
-    }
-
-    private String getJSONFromAssets() {
-        String json = null;
-        try {
-            InputStream inputStream = getAssets().open(AppConstants.FILE_NAME);
-            byte[] buffer = new byte[inputStream.available()];
-            inputStream.read(buffer);
-            inputStream.close();
-            json = new String(buffer, StandardCharsets.UTF_8);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            return null;
-        }
-        return json;
     }
 
     @Override

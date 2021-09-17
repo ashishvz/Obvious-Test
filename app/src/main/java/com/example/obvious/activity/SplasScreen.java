@@ -1,4 +1,4 @@
-package com.example.obvious;
+package com.example.obvious.activity;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,8 +13,9 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.gif.GifDrawable;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
-import com.example.obvious.activity.MainActivity;
+import com.example.obvious.R;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.card.MaterialCardView;
 
 public class SplasScreen extends AppCompatActivity {
 
@@ -24,8 +25,8 @@ public class SplasScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splas_screen);
         ImageView imageView = findViewById(R.id.splashImageView);
-        MaterialButton button = findViewById(R.id.button);
-        Glide.with(getApplicationContext()).asGif().load(R.drawable.space_dance).into(new SimpleTarget<GifDrawable>() {
+        MaterialCardView button = findViewById(R.id.cardViewButton);
+        Glide.with(getApplicationContext()).asGif().load(R.drawable.spacewalk).into(new SimpleTarget<GifDrawable>() {
             @Override
             public void onResourceReady(@NonNull GifDrawable resource, @Nullable Transition<? super GifDrawable> transition) {
                 resource.start();

@@ -17,6 +17,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
+import com.example.obvious.interfaces.onClickListener;
 import com.example.obvious.model.DataModel;
 import com.example.obvious.R;
 
@@ -24,9 +25,9 @@ import java.util.List;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
 
-    private Context context;
-    private List<DataModel> dataModels;
-    private onClickListener onClickListener;
+    private final Context context;
+    private final List<DataModel> dataModels;
+    private final onClickListener onClickListener;
 
     public Adapter(Context context, List<DataModel> dataModels, onClickListener onClickListener) {
         this.context = context;
@@ -62,16 +63,11 @@ public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        private ImageView imageView;
+        private final ImageView imageView;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.imageView);
         }
     }
-
-    public interface onClickListener {
-        void onClick(int position, ImageView imageView);
-    }
-
 }
