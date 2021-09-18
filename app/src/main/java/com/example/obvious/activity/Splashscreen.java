@@ -14,10 +14,9 @@ import com.bumptech.glide.load.resource.gif.GifDrawable;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.example.obvious.R;
-import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
 
-public class SplasScreen extends AppCompatActivity {
+public class Splashscreen extends AppCompatActivity {
 
 
     @Override
@@ -36,7 +35,7 @@ public class SplasScreen extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(SplasScreen.this, MainActivity.class));
+                startActivity(new Intent(Splashscreen.this, MainActivity.class));
                 finish();
             }
         });
